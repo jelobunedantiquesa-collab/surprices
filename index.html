@@ -140,10 +140,11 @@
     z-index: -1; 
   }
   
+  /* PULOS LAVENDER ANG MGA BACKGROUND */
   #lavender-detail-1::before { background-image: url('https://i.imgur.com/4YO5nkS.jpg'); }
   #lavender-detail-2::before { background-image: url('https://i.imgur.com/oFJXJWA.jpg'); }
   #lavender-detail-3::before { background-image: url('https://i.imgur.com/6ERqC55.jpg'); }
-  #lavender-detail-4::before { background-image: url('https://i.imgur.com/J5t0nOu.jpg'); }
+  #lavender-detail-4::before { background-image: url('https://i.imgur.com/J5t0nOu.jpg'); } /* Roses man ni sa una, pero ato lang gamiton kay wala nay lain */
 
   .lavender-detail h1 {
     color: #d6336c;
@@ -178,35 +179,19 @@
     z-index: 1;
   }
 
-  /* ========================================= */
-  /* CSS PARA SA CLICK HEART ANIMATION (GIBAG-O) */
-  /* ========================================= */
+  /* CLICK HEART ANIMATION */
   .click-heart {
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    /* Gigamit ang 💗 kay mas nindot ug gradient ang pink */
     animation: floatUpFade 3s ease-in forwards;
   }
   
-  /* Ang animation: Magsugod sa ubos, moadto sa pinakababaw, unya mo-fade */
   @keyframes floatUpFade {
-    0% { 
-      transform: translateY(0) scale(0.5); 
-      opacity: 0; 
-    }
-    10% { 
-      opacity: 1; 
-      transform: translateY(-20px) scale(1); 
-    }
-    80% { 
-      opacity: 1; 
-      transform: translateY(-90vh) scale(1.1); 
-    }
-    100% { 
-      transform: translateY(-100vh) scale(1.2); 
-      opacity: 0; 
-    }
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    10% { opacity: 1; transform: translateY(-20px) scale(1); }
+    80% { opacity: 1; transform: translateY(-90vh) scale(1.1); }
+    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
   }
 </style>
 </head>
@@ -269,16 +254,14 @@
     </div>
   </div>
 
-  <!-- SURPRISE 1: MUSIC (DUHA KA KANTA) -->
+  <!-- SURPRISE 1: MUSIC -->
   <div id="content-music" class="content-screen hidden">
     <h1>Our Favorite Songs</h1>
     <p>Two songs that remind me of you.</p>
     
-    <!-- UNA NGA KANTA -->
     <div class="song-title">Libu-libong Buwan by Kyle Raphael</div>
     <iframe class="music-player" src="https://www.youtube.com/embed/MVrPhW8933U" title="Libo-libong Buwan - Kyle Raphael" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     
-    <!-- IKADUHA NGA KANTA -->
     <div class="song-title">Best part by Daniel Ceasar ft. HER</div>
     <iframe class="music-player" src="https://www.youtube.com/embed/vBy7FaapGRo" title="Best Part - Daniel Caesar ft. H.E.R." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -304,39 +287,39 @@
         <span>Akong Pinangga</span>
       </div>
       <div class="lavender-item" onclick="showLavenderDetail(4)">
-        <img src="https://i.imgur.com/J5t0nOu.jpg" alt="Roses">
+        <img src="https://i.imgur.com/J5t0nOu.jpg" alt="Lavender 4">
         <span>Hangtod sa Kahangturan</span>
       </div>
     </div>
     <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
   </div>
 
-  <!-- LAVENDER DETAILS -->
+  <!-- LAVENDER DETAILS (CONTINUATION ANG STORY) -->
   <div id="lavender-detail-1" class="content-screen lavender-detail hidden">
     <h1>Puhon...</h1>
     <img src="https://i.imgur.com/4YO5nkS.jpg" alt="Lavender 1">
-    <p>This flower reminds me of our future together. Puhon, kung magkauban na ta pirmi, akong hatagan ka og pinakadako ug pinakaanindot nga buket sa bulak kay ikaw ra man ang akong gusto makuyog hangtod sa katapusan.</p>
+    <p>This flower reminds me of our future together. Puhon, kung magkauban na ta pirmi, akong hatagan ka og pinakadako ug pinakaanindot nga buket sa bulak kay ikaw ra man ang akong gusto makuyog hangtod sa katapusan sa akong kinabuhi.</p>
     <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
   </div>
 
   <div id="lavender-detail-2" class="content-screen lavender-detail hidden">
     <h1>Ikaw ug Ako</h1>
     <img src="https://i.imgur.com/oFJXJWA.jpg" alt="Lavender 2">
-    <p>Just like these flowers that grow beautifully side by side, I want to grow old with you. Ikaw ug ako, magkauban sa tanan. Bisan unsa pa ang muabot nga problema, dili ko ka biyaan kay ikaw ra ang akong pilion kada adlaw.</p>
+    <p>Just like these flowers that grow beautifully side by side, I want to grow old with you. Ikaw ug ako, magkauban sa tanan. Bisan unsa pa ang muabot nga problema ug kabudlay, dili ko ka biyaan kay ikaw ra ang akong pilion ug higugmaon kada adlaw.</p>
     <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
   </div>
 
   <div id="lavender-detail-3" class="content-screen lavender-detail hidden">
     <h1>Akong Pinangga</h1>
     <img src="https://i.imgur.com/6ERqC55.jpg" alt="Lavender 3">
-    <p>You are the greatest blessing I have ever received. Sama niini ka humot ug ka gwapa nga bulak, dili ko gyud ka ilisdan bisan kinsa. Ikaw ra ang akong pinangga ug akong pahulay sa tibuok adlaw.</p>
+    <p>You are the greatest blessing I have ever received. Sama niini ka humot ug ka gwapa nga bulak, dili ko gyud ka ilisdan bisan kinsa. Ikaw ra ang akong pinangga, akong kalipay, ug akong pahulay sa tibuok adlaw.</p>
     <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
   </div>
 
   <div id="lavender-detail-4" class="content-screen lavender-detail hidden">
     <h1>Hangtod sa Kahangturan</h1>
-    <img src="https://i.imgur.com/J5t0nOu.jpg" alt="Roses">
-    <p>My love for you is like this lavender field, it keeps on growing and never fades. Ang akong gugma nimo dili mu-uga, sama niining lavender nga bisan malaya, naa gihapoy humot nga mahabilin. Hangtod sa kahangturan, ikaw lang ang akong gugma.</p>
+    <img src="https://i.imgur.com/J5t0nOu.jpg" alt="Lavender 4">
+    <p>My love for you is like this lavender field, it keeps on growing and never fades. Ang akong gugma nimo dili mu-uga, sama niining lavender nga bisan malaya, naa gihapoy humot nga mahabilin. Hangtod sa kahangturan, ikaw lang ug wala nay lain pa ang akong gugma.</p>
     <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
   </div>
 
@@ -366,7 +349,6 @@
 </div>
 
 <script>
-  // MGA FUNCTION PARA SA SECRET CODE
   let enteredCode = "";
   const correctCode = "1201";
   const heartIcons = ["h1", "h2", "h3", "h4"];
@@ -375,7 +357,7 @@
     if (enteredCode.length < 4) {
       enteredCode += num;
       updateHearts();
-      createClickHearts(); // Mag-buto ang heart inig-click sa number
+      createClickHearts();
     }
   }
 
@@ -383,7 +365,7 @@
     if (enteredCode.length > 0) {
       enteredCode = enteredCode.slice(0, -1);
       updateHearts();
-      createClickHearts(); // Mag-buto ang heart inig-click sa delete
+      createClickHearts();
     }
   }
 
@@ -396,7 +378,7 @@
   }
 
   function checkCode() {
-    createClickHearts(); // Mag-buto ang heart inig-click sa Enter
+    createClickHearts();
     if (enteredCode === correctCode) {
       document.getElementById('screen-code').classList.add('hidden');
       document.getElementById('screen-boxes').classList.remove('hidden');
@@ -407,23 +389,22 @@
     }
   }
 
-  // MGA FUNCTION PARA SA PAGBALHIN SA SCREEN
   function showContent(contentId) {
-    createClickHearts(); // Mag-buto ang heart inig-click sa Gift Box
+    createClickHearts();
     document.getElementById('screen-boxes').classList.add('hidden');
     document.getElementById(contentId).classList.remove('hidden');
     window.scrollTo(0, 0);
   }
 
   function showLavenderDetail(id) {
-    createClickHearts(); // Mag-buto ang heart inig-click sa Lavender Item
+    createClickHearts();
     document.getElementById('content-flowers').classList.add('hidden');
     document.getElementById('lavender-detail-' + id).classList.remove('hidden');
     window.scrollTo(0, 0);
   }
 
   function backToLavenderMenu() {
-    createClickHearts(); // Mag-buto ang heart inig-click sa Back button
+    createClickHearts();
     for (let i = 1; i <= 4; i++) {
       document.getElementById('lavender-detail-' + i).classList.add('hidden');
     }
@@ -432,7 +413,7 @@
   }
 
   function backToBoxes() {
-    createClickHearts(); // Mag-buto ang heart inig-click sa Back to Gifts
+    createClickHearts();
     document.getElementById('content-music').classList.add('hidden');
     document.getElementById('content-flowers').classList.add('hidden');
     document.getElementById('content-letter').classList.add('hidden');
@@ -443,38 +424,21 @@
     window.scrollTo(0, 0);
   }
 
-  // ==========================================
-  // FUNCTION PARA SA PAGHIMO OG HEART ANIMATION (GIBAG-O)
-  // ==========================================
   function createClickHearts() {
-    const totalHearts = 15; // 15 ka heart ang mogawas
-    
+    const totalHearts = 15;
     for (let i = 0; i < totalHearts; i++) {
-      // Maghimo og bag-ong element para sa heart
       const heart = document.createElement('div');
       heart.classList.add('click-heart');
-      
-      // Gigamit ang 💗 kay mas nindot ug gradient kaysa sa flat nga pink
       heart.innerHTML = '💗'; 
-
-      // Random position sa X axis (left/right) ug random size
       const randomX = Math.random() * window.innerWidth;
-      const randomSize = Math.random() * 20 + 20; // Tali sa 20px ug 40px
-      
+      const randomSize = Math.random() * 20 + 20; 
       heart.style.left = randomX + 'px';
-      heart.style.bottom = '0px'; // Magsugod sa pinakaubos
+      heart.style.bottom = '0px'; 
       heart.style.fontSize = randomSize + 'px';
-
-      // Idugang sa body
       document.body.appendChild(heart);
-
-      // Isa-isa sila paggawas pinaagi sa setTimeout delay
-      // Ang matag heart kay ma-delay og 100ms (0.1 seconds) para magsunod-sunod
       setTimeout(() => {
         heart.style.animation = 'floatUpFade 3s ease-in forwards';
       }, i * 100); 
-
-      // Tangtanga ang heart human sa 4 seconds (3s animation + 1s delay) para limpyo
       setTimeout(() => {
         heart.remove();
       }, 4000 + (i * 100));
