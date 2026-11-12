@@ -82,7 +82,7 @@
     animation: bounce 2s infinite; 
     display: flex; flex-direction: column; align-items: center;
   }
-  .box img { width: 100%; height: auto; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15)); transition: 0.3s;}
+  .box img { width: 100%; height: auto; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15)); transition: 0.3s; border-radius: 10px;}
   .box:nth-child(2) { animation-delay: 0.2s; }
   .box:nth-child(3) { animation-delay: 0.4s; }
   .box:hover img { transform: scale(1.1) translateY(-5px); }
@@ -171,23 +171,18 @@
   }
   .lavender-detail .btn { z-index: 1; }
 
-  /* ========================================= */
-  /* CLICK HEART ANIMATION (GIBAG-O PARA MAG-ISA-ISA) */
-  /* ========================================= */
+  /* CLICK HEART ANIMATION (ISA-ISA) */
   .click-heart {
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    bottom: 0; /* Magsugod jud sa pinakaubos */
-    transform: translateY(0) scale(0.5); /* Pormal nga size sa sugod */
-    opacity: 0; /* Tago sa sugod */
+    bottom: 0; 
+    transform: translateY(0) scale(0.5); 
+    opacity: 0; 
   }
-  
-  /* Ang animation magsugod lang kung butangan og class sa JavaScript */
   .click-heart.animate {
     animation: floatUpFade 3s ease-in forwards;
   }
-
   @keyframes floatUpFade {
     0% { transform: translateY(0) scale(0.5); opacity: 0; }
     10% { opacity: 1; transform: translateY(-20px) scale(1); }
@@ -202,16 +197,13 @@
 
   <!-- SCREEN 1: SECRET CODE -->
   <div id="screen-code" class="code-screen-layout">
-    
     <div class="photos-container">
       <div class="heart-frame"></div>
       <div class="heart-frame"></div>
     </div>
-
     <div class="code-title">
       <span class="heart-icon">🎀</span> Enter our secret code <span class="heart-icon">💖</span>
     </div>
-
     <div class="display-hearts" id="heart-display">
       <span id="h1">🤍</span>
       <span id="h2">🤍</span>
@@ -219,7 +211,6 @@
       <span id="h4">🤍</span>
     </div>
     <div class="code-status">Unlocked: 0</div>
-
     <div class="keypad">
       <button class="key" onclick="typeCode('1')">1</button>
       <button class="key" onclick="typeCode('2')">2</button>
@@ -234,23 +225,23 @@
       <button class="key" onclick="typeCode('0')">0</button>
       <button class="key enter-btn" onclick="checkCode()">➡</button>
     </div>
-    
     <div id="error-msg" style="color:red; font-size:12px; display:none; margin-top:10px;">Wrong code, try again! 😉</div>
   </div>
 
-  <!-- SCREEN 2: GIFT BOXES -->
+  <!-- SCREEN 2: GIFT BOXES (GIILISAN OG 3D RED GIFT BOX) -->
   <div id="screen-boxes" class="hidden">
     <h1>You unlocked it!</h1>
     <p>Your surprises are waiting for you</p>
     <div class="boxes">
       <div class="box" onclick="showContent('content-music')">
-        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift 1">
+        <!-- 3D RED GIFT BOX PICTURE -->
+        <img src="https://images.unsplash.com/photo-1575884763291-8dcf5d05be6f?q=80&w=300&auto=format&fit=crop" alt="Gift 1">
       </div>
       <div class="box" onclick="showContent('content-flowers')">
-        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift 2">
+        <img src="https://images.unsplash.com/photo-1575884763291-8dcf5d05be6f?q=80&w=300&auto=format&fit=crop" alt="Gift 2">
       </div>
       <div class="box" onclick="showContent('content-letter')">
-        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift 3">
+        <img src="https://images.unsplash.com/photo-1575884763291-8dcf5d05be6f?q=80&w=300&auto=format&fit=crop" alt="Gift 3">
       </div>
     </div>
   </div>
@@ -298,21 +289,18 @@
     <p>This flower reminds me of our future together. Puhon, kung magkauban na ta pirmi, akong hatagan ka og pinakadako ug pinakaanindot nga buket sa bulak kay ikaw ra man ang akong gusto makuyog hangtod sa katapusan sa akong kinabuhi.</p>
     <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
   </div>
-
   <div id="lavender-detail-2" class="content-screen lavender-detail hidden">
     <h1>Ikaw ug Ako</h1>
     <img src="https://i.imgur.com/oFJXJWA.jpg" alt="Lavender 2">
     <p>Just like these flowers that grow beautifully side by side, I want to grow old with you. Ikaw ug ako, magkauban sa tanan. Bisan unsa pa ang muabot nga problema ug kabudlay, dili ko ka biyaan kay ikaw ra ang akong pilion ug higugmaon kada adlaw.</p>
     <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
   </div>
-
   <div id="lavender-detail-3" class="content-screen lavender-detail hidden">
     <h1>Akong Pinangga</h1>
     <img src="https://i.imgur.com/6ERqC55.jpg" alt="Lavender 3">
     <p>You are the greatest blessing I have ever received. Sama niini ka humot ug ka gwapa nga bulak, dili ko gyud ka ilisdan bisan kinsa. Ikaw ra ang akong pinangga, akong kalipay, ug akong pahulay sa tibuok adlaw.</p>
     <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
   </div>
-
   <div id="lavender-detail-4" class="content-screen lavender-detail hidden">
     <h1>Hangtod sa Kahangturan</h1>
     <img src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?q=80&w=400&auto=format&fit=crop" alt="Lavender Field">
@@ -434,31 +422,20 @@
     window.scrollTo(0, 0);
   }
 
-  // ==========================================
-  // GIBAG-O NGA FUNCTION PARA MAG-ISA-ISA ANG HEART
-  // ==========================================
   function createClickHearts() {
     const totalHearts = 15; 
-    
     for (let i = 0; i < totalHearts; i++) {
       const heart = document.createElement('div');
       heart.classList.add('click-heart');
       heart.innerHTML = '💗'; 
-
       const randomX = Math.random() * window.innerWidth;
       const randomSize = Math.random() * 20 + 20; 
-      
       heart.style.left = randomX + 'px';
       heart.style.fontSize = randomSize + 'px';
-
       document.body.appendChild(heart);
-
-      // KINI ANG IMPORTANTE: Maghulat siya og 100ms (0.1s) kada heart bag-o niya butangan og animation class
       setTimeout(() => {
-        heart.classList.add('animate'); // Dinhi pa magsugod ang CSS animation
+        heart.classList.add('animate');
       }, i * 100); 
-
-      // Tangtanga ang heart human sa 4 seconds para limpyo ang DOM
       setTimeout(() => {
         heart.remove();
       }, 4000 + (i * 100));
