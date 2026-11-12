@@ -64,8 +64,8 @@
     width: 90px; cursor: pointer; transition: 0.3s; animation: bounce 2s infinite; 
     display: flex; flex-direction: column; align-items: center;
   }
-  /* GIILISAN NAKO OG IMONG PICTURE ANG GIFT BOX */
-  .box img { width: 100%; height: auto; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15)); transition: 0.3s; border-radius: 10px;}
+  /* GIILISAN NAKO OG STABLE NGA LINK ARON DILI MAG-BROKEN IMAGE */
+  .box img { width: 100%; height: auto; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15)); transition: 0.3s; border-radius: 10px; display: block;}
   .box:nth-child(2) { animation-delay: 0.2s; }
   .box:nth-child(3) { animation-delay: 0.4s; }
   .box:hover img { transform: scale(1.1) translateY(-5px); }
@@ -160,26 +160,27 @@
     <div id="error-msg" style="color:red; font-size:12px; display:none; margin-top:10px;">Wrong code, try again! 😉</div>
   </div>
 
-  <!-- SCREEN 2: GIFT BOXES (IMONG PICTURE) -->
+  <!-- SCREEN 2: GIFT BOXES -->
   <div id="screen-boxes" class="hidden">
     <h1>You unlocked it!</h1>
     <p>Your surprises are waiting for you</p>
     <div class="boxes">
       <div class="box" onclick="showContent('content-music')">
-        <img src="https://i.imgur.com/pSIJwmy.jpg" alt="Gift 1">
+        <!-- STABLE NGA GIFT BOX PICTURE -->
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift">
       </div>
       <div class="box" onclick="showContent('content-flowers')">
-        <img src="https://i.imgur.com/pSIJwmy.jpg" alt="Gift 2">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift">
       </div>
       <div class="box" onclick="showContent('content-letter')">
-        <img src="https://i.imgur.com/pSIJwmy.jpg" alt="Gift 3">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift">
       </div>
     </div>
   </div>
 
   <!-- BAG-O NGA SCREEN PARA SA IKADUHANG PICTURE -->
   <div id="content-intro" class="content-screen hidden">
-    <!-- IKADUHANG PICTURE NIMO DIRE -->
+    <!-- IMONG IKADUHANG PICTURE DIRE -->
     <img src="https://i.imgur.com/Gc5Sv0W.jpg" alt="Intro Picture" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); margin-bottom: 20px;">
     <button class="btn" onclick="showContent('content-music')">Open Your Gift ➡</button>
   </div>
