@@ -39,7 +39,6 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     position: relative;
   }
-  /* Duha ka Lahi nga Picture sa Heart */
   .heart-frame:nth-child(1) { background-image: url('https://i.imgur.com/oNvAg0n.jpg'); }
   .heart-frame:nth-child(2) { background-image: url('https://i.imgur.com/lA8ifxq.jpg'); }
   
@@ -71,7 +70,7 @@
   .key.delete-btn { background: #ffe6ec; color: #d6336c; font-size: 14px;}
   .key.enter-btn { background: #ff6b9d; color: white; font-size: 16px; border-color: #d6336c;}
 
-  /* GIFT BOXES SCREEN (WALAY NAME) */
+  /* GIFT BOXES SCREEN */
   #screen-boxes {
     background: linear-gradient(135deg, #ffe6ec 0%, #ffcce0 100%);
     padding: 30px 10px; border-radius: 15px; box-shadow: inset 0 0 20px rgba(255,255,255,0.8);
@@ -98,8 +97,6 @@
   
   /* LETTER & MUSIC */
   .letter-box { background: #fffdf5; border: 1px solid #f0e6d2; padding: 20px; border-radius: 10px; text-align: left; font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: #444; line-height: 1.6; margin-top: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-  
-  /* MUSIC PLAYER DUHA */
   .music-player { width: 100%; height: 180px; border-radius: 10px; margin-top: 15px; border: none; }
   .song-title { font-size: 14px; color: #d6336c; margin-top: 20px; font-weight: bold;}
 
@@ -140,11 +137,11 @@
     z-index: -1; 
   }
   
-  /* PULOS LAVENDER ANG MGA BACKGROUND */
   #lavender-detail-1::before { background-image: url('https://i.imgur.com/4YO5nkS.jpg'); }
   #lavender-detail-2::before { background-image: url('https://i.imgur.com/oFJXJWA.jpg'); }
   #lavender-detail-3::before { background-image: url('https://i.imgur.com/6ERqC55.jpg'); }
-  #lavender-detail-4::before { background-image: url('https://i.imgur.com/J5t0nOu.jpg'); } /* Roses man ni sa una, pero ato lang gamiton kay wala nay lain */
+  /* GIILISAN NAKO OG TINUOD NGA LAVENDER FIELD ANG IKA-4 */
+  #lavender-detail-4::before { background-image: url('https://images.unsplash.com/photo-1499002238440-d264edd596ec?q=80&w=800&auto=format&fit=crop'); } 
 
   .lavender-detail h1 {
     color: #d6336c;
@@ -258,13 +255,10 @@
   <div id="content-music" class="content-screen hidden">
     <h1>Our Favorite Songs</h1>
     <p>Two songs that remind me of you.</p>
-    
     <div class="song-title">Libu-libong Buwan by Kyle Raphael</div>
     <iframe class="music-player" src="https://www.youtube.com/embed/MVrPhW8933U" title="Libo-libong Buwan - Kyle Raphael" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    
     <div class="song-title">Best part by Daniel Ceasar ft. HER</div>
     <iframe class="music-player" src="https://www.youtube.com/embed/vBy7FaapGRo" title="Best Part - Daniel Caesar ft. H.E.R." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
     <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
   </div>
 
@@ -272,7 +266,6 @@
   <div id="content-flowers" class="content-screen hidden">
     <h1>Your Favorite Flower</h1>
     <p>Click each flower to read a message.</p>
-    
     <div class="lavender-menu">
       <div class="lavender-item" onclick="showLavenderDetail(1)">
         <img src="https://i.imgur.com/4YO5nkS.jpg" alt="Lavender 1">
@@ -287,14 +280,15 @@
         <span>Akong Pinangga</span>
       </div>
       <div class="lavender-item" onclick="showLavenderDetail(4)">
-        <img src="https://i.imgur.com/J5t0nOu.jpg" alt="Lavender 4">
+        <!-- GIILISAN NAKO OG LAVENDER FIELD ANG PICTURE -->
+        <img src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?q=80&w=200&auto=format&fit=crop" alt="Lavender Field">
         <span>Hangtod sa Kahangturan</span>
       </div>
     </div>
     <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
   </div>
 
-  <!-- LAVENDER DETAILS (CONTINUATION ANG STORY) -->
+  <!-- LAVENDER DETAILS -->
   <div id="lavender-detail-1" class="content-screen lavender-detail hidden">
     <h1>Puhon...</h1>
     <img src="https://i.imgur.com/4YO5nkS.jpg" alt="Lavender 1">
@@ -318,7 +312,8 @@
 
   <div id="lavender-detail-4" class="content-screen lavender-detail hidden">
     <h1>Hangtod sa Kahangturan</h1>
-    <img src="https://i.imgur.com/J5t0nOu.jpg" alt="Lavender 4">
+    <!-- GIILISAN NAKO OG LAVENDER FIELD ANG PICTURE -->
+    <img src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?q=80&w=400&auto=format&fit=crop" alt="Lavender Field">
     <p>My love for you is like this lavender field, it keeps on growing and never fades. Ang akong gugma nimo dili mu-uga, sama niining lavender nga bisan malaya, naa gihapoy humot nga mahabilin. Hangtod sa kahangturan, ikaw lang ug wala nay lain pa ang akong gugma.</p>
     <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
   </div>
@@ -375,6 +370,20 @@
     }
     document.querySelector('.code-status').innerText = "Unlocked: " + enteredCode.length;
     document.getElementById('error-msg').style.display = 'none';
+
+    // KINI ANG BAG-O: KUNG MA-COMPLETE ANG 4 KA NUMERO UG SAKTO, DIRETSO NA SIYA OPEN
+    if (enteredCode.length === 4) {
+      setTimeout(() => {
+        if (enteredCode === correctCode) {
+          document.getElementById('screen-code').classList.add('hidden');
+          document.getElementById('screen-boxes').classList.remove('hidden');
+        } else {
+          document.getElementById('error-msg').style.display = 'block';
+          enteredCode = "";
+          updateHearts();
+        }
+      }, 300); // 0.3 seconds delay para makita niya ang ika-4 ka heart nga ni-red sa dili pa mo-open
+    }
   }
 
   function checkCode() {
