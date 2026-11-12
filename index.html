@@ -53,18 +53,18 @@
   .key.delete-btn { background: #ffe6ec; color: #d6336c; font-size: 14px;}
   .key.enter-btn { background: #ff6b9d; color: white; font-size: 16px; border-color: #d6336c;}
 
-  /* GIFT BOXES SCREEN */
+  /* GIFT BOXES SCREEN (WALAY DASHED BORDER) */
   #screen-boxes {
     background: linear-gradient(135deg, #ffe6ec 0%, #ffcce0 100%);
-    padding: 30px 10px; border-radius: 15px; box-shadow: inset 0 0 20px rgba(255,255,255,0.8);
-    border: 2px dashed #ffb3c6; position: relative;
+    padding: 30px 10px; border-radius: 15px; 
+    box-shadow: 0 5px 15px rgba(255,105,180,0.2);
+    position: relative;
   }
   .boxes { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;}
   .box { 
     width: 90px; cursor: pointer; transition: 0.3s; animation: bounce 2s infinite; 
     display: flex; flex-direction: column; align-items: center;
   }
-  /* GIILISAN NAKO OG STABLE NGA LINK ARON DILI MAG-BROKEN IMAGE */
   .box img { width: 100%; height: auto; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15)); transition: 0.3s; border-radius: 10px; display: block;}
   .box:nth-child(2) { animation-delay: 0.2s; }
   .box:nth-child(3) { animation-delay: 0.4s; }
@@ -165,24 +165,28 @@
     <h1>You unlocked it!</h1>
     <p>Your surprises are waiting for you</p>
     <div class="boxes">
-      <div class="box" onclick="showContent('content-music')">
-        <!-- STABLE NGA GIFT BOX PICTURE -->
+      <div class="box" onclick="showIntro()">
         <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift">
       </div>
-      <div class="box" onclick="showContent('content-flowers')">
+      <div class="box" onclick="showIntro()">
         <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift">
       </div>
-      <div class="box" onclick="showContent('content-letter')">
+      <div class="box" onclick="showIntro()">
         <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift">
       </div>
     </div>
   </div>
 
-  <!-- BAG-O NGA SCREEN PARA SA IKADUHANG PICTURE -->
+  <!-- INTRO SCREEN (IKADUHANG PICTURE NIMO) -->
   <div id="content-intro" class="content-screen hidden">
-    <!-- IMONG IKADUHANG PICTURE DIRE -->
     <img src="https://i.imgur.com/Gc5Sv0W.jpg" alt="Intro Picture" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); margin-bottom: 20px;">
-    <button class="btn" onclick="showContent('content-music')">Open Your Gift ➡</button>
+    
+    <!-- TULO KA BUTTON PARA MAKAPILI SIYA ASA MOADTO -->
+    <button class="btn" onclick="showContent('content-music')" style="margin-bottom: 10px;">Listen to Music 🎵</button>
+    <button class="btn" onclick="showContent('content-flowers')" style="margin-bottom: 10px;">See the Flowers 🌸</button>
+    <button class="btn" onclick="showContent('content-letter')" style="margin-bottom: 10px;">Read the Letter 💌</button>
+    
+    <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
   </div>
 
   <!-- SURPRISE 1: MUSIC -->
@@ -193,7 +197,7 @@
     <iframe class="music-player" src="https://www.youtube.com/embed/MVrPhW8933U" title="Libo-libong Buwan - Kyle Raphael" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <div class="song-title">Best part by Daniel Ceasar ft. HER</div>
     <iframe class="music-player" src="https://www.youtube.com/embed/vBy7FaapGRo" title="Best Part - Daniel Caesar ft. H.E.R." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
+    <button class="btn back-btn" onclick="backToIntro()">⬅ Back to Gifts</button>
   </div>
 
   <!-- SURPRISE 2: LAVENDER MENU -->
@@ -218,7 +222,7 @@
         <span>Hangtod sa Kahangturan</span>
       </div>
     </div>
-    <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
+    <button class="btn back-btn" onclick="backToIntro()">⬅ Back to Gifts</button>
   </div>
 
   <!-- LAVENDER DETAILS -->
@@ -267,7 +271,7 @@
         <img src="https://i.imgur.com/x6rdEUN.jpg" class="bubble-img" alt="Pic 3">
         <img src="https://i.imgur.com/RWhuZMA.jpg" class="bubble-img" alt="Pic 4">
     </div>
-    <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
+    <button class="btn back-btn" onclick="backToIntro()">⬅ Back to Gifts</button>
   </div>
 
 </div>
@@ -326,16 +330,24 @@
     }
   }
 
-  function showContent(contentId) {
+  // MAO NI ANG FUNCTION PARA MAKITA ANG INTRO PICTURE
+  function showIntro() {
     createClickHearts();
     document.getElementById('screen-boxes').classList.add('hidden');
+    document.getElementById('content-intro').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  function showContent(contentId) {
+    createClickHearts();
+    // Itago tanan una
+    document.getElementById('content-intro').classList.add('hidden');
+    document.getElementById('content-music').classList.add('hidden');
+    document.getElementById('content-flowers').classList.add('hidden');
+    document.getElementById('content-letter').classList.add('hidden');
     
-    // Kung ang gi-click kay usa sa mga boxes, ipakita una ang intro picture
-    if (contentId === 'content-music' || contentId === 'content-flowers' || contentId === 'content-letter') {
-      document.getElementById('content-intro').classList.remove('hidden');
-    } else {
-      document.getElementById(contentId).classList.remove('hidden');
-    }
+    // Ipakita ang gipili
+    document.getElementById(contentId).classList.remove('hidden');
     window.scrollTo(0, 0);
   }
 
@@ -352,6 +364,19 @@
       document.getElementById('lavender-detail-' + i).classList.add('hidden');
     }
     document.getElementById('content-flowers').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  // BALIK SA INTRO PICTURE
+  function backToIntro() {
+    createClickHearts();
+    document.getElementById('content-music').classList.add('hidden');
+    document.getElementById('content-flowers').classList.add('hidden');
+    document.getElementById('content-letter').classList.add('hidden');
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById('lavender-detail-' + i).classList.add('hidden');
+    }
+    document.getElementById('content-intro').classList.remove('hidden');
     window.scrollTo(0, 0);
   }
 
