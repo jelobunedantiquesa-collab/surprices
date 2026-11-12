@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffe6ec;
+    background-image: url('https://www.transparenttextures.com/patterns/hearts.png');
+    display: flex; justify-content: center; align-items: center; 
+    min-height: 100vh; padding: 20px 0; overflow-x: hidden;
+  }
+  .container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px 20px; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    width: 95%; max-width: 450px; position: relative;
+  }
+  .hidden { display: none !important; }
+  h1 { font-family: 'Dancing Script', cursive; color: #d6336c; font-size: 2.2rem; margin-bottom: 10px; text-align: center;}
+  p { color: #555; margin-bottom: 20px; font-size: 0.9rem; text-align: center;}
+
+  /* SECRET CODE SCREEN DESIGN */
+  .code-screen-layout { display: flex; flex-direction: column; align-items: center; width: 100%;}
+  
+  .photos-container {
+    display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; width: 100%;
+  }
+  .heart-frame {
+    width: 100px; height: 100px;
+    background-size: cover; background-position: center;
+    clip-path: path('M50,15 C50,15 20,-10 0,15 C-20,40 50,80 50,80 C50,80 120,40 100,15 C80,-10 50,15 50,15 Z');
+    -webkit-clip-path: polygon(50% 15%, 80% 0%, 100% 35%, 50% 90%, 0% 35%, 20% 0%);
+    border: 4px solid #ffb3c6;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  /* Duha ka Lahi nga Picture sa Heart */
+  .heart-frame:nth-child(1) { background-image: url('https://i.imgur.com/oNvAg0n.jpg'); }
+  .heart-frame:nth-child(2) { background-image: url('https://i.imgur.com/lA8ifxq.jpg'); }
+  
+  .code-title { font-family: 'Dancing Script', cursive; color: #d6336c; font-size: 2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;}
+  .heart-icon { font-size: 1.5rem; }
+
+  .display-hearts {
+    display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;
+  }
+  .display-hearts span { font-size: 24px; color: #ff6b9d; }
+  
+  .code-status { font-size: 10px; color: #888; margin-bottom: 15px;}
+
+  /* KEYPAD STYLE */
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 20px auto;
+  }
+  .key {
+    background: #fff; border: 2px solid #ffb3c6; border-radius: 15px;
+    padding: 15px 0; font-size: 18px; font-weight: bold; color: #555;
+    cursor: pointer; transition: 0.2s; box-shadow: 0 4px 0 #ffb3c6;
+  }
+  .key:active { transform: translateY(4px); box-shadow: 0 0 0 #ffb3c6; }
+  .key.delete-btn { background: #ffe6ec; color: #d6336c; font-size: 14px;}
+  .key.enter-btn { background: #ff6b9d; color: white; font-size: 16px; border-color: #d6336c;}
+
+  /* GIFT BOXES SCREEN (WALAY NAME) */
+  #screen-boxes {
+    background: linear-gradient(135deg, #ffe6ec 0%, #ffcce0 100%);
+    padding: 30px 10px; border-radius: 15px; box-shadow: inset 0 0 20px rgba(255,255,255,0.8);
+    border: 2px dashed #ffb3c6; position: relative;
+  }
+  .boxes { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;}
+  .box { 
+    width: 90px; cursor: pointer; transition: 0.3s; 
+    animation: bounce 2s infinite; 
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .box img { width: 100%; height: auto; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15)); transition: 0.3s;}
+  .box:nth-child(2) { animation-delay: 0.2s; }
+  .box:nth-child(3) { animation-delay: 0.4s; }
+  .box:hover img { transform: scale(1.1) translateY(-5px); }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+  /* CONTENT SCREENS */
+  .content-screen { text-align: center; animation: fadeIn 0.5s; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .btn { display: block; margin: 0 auto; background: #ff6b9d; color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 16px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4); transition: 0.3s;}
+  .btn:hover { transform: scale(1.05); }
+  .back-btn { margin-top: 30px; background: #ffb3c6; color: #d6336c; font-size: 14px; padding: 10px 25px; }
+  
+  /* LETTER & MUSIC */
+  .letter-box { background: #fffdf5; border: 1px solid #f0e6d2; padding: 20px; border-radius: 10px; text-align: left; font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: #444; line-height: 1.6; margin-top: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+  
+  /* MUSIC PLAYER DUHA */
+  .music-player { width: 100%; height: 180px; border-radius: 10px; margin-top: 15px; border: none; }
+  .song-title { font-size: 14px; color: #d6336c; margin-top: 20px; font-weight: bold;}
+
+  /* BUBBLE ANIMATION */
+  .bubble-container { position: relative; height: 500px; overflow: hidden; margin-top: 20px; border-radius: 15px; background: rgba(255, 240, 245, 0.5); border: 1px dashed #ffb3c6;}
+  .bubble-img { position: absolute; bottom: -150px; border-radius: 50%; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); object-fit: cover; animation: floatUp 15s linear infinite;}
+  .bubble-img:nth-child(1) { width: 90px; height: 90px; left: 10%; animation-duration: 10s; animation-delay: 0s; }
+  .bubble-img:nth-child(2) { width: 110px; height: 110px; left: 50%; animation-duration: 14s; animation-delay: 3s; }
+  .bubble-img:nth-child(3) { width: 80px; height: 80px; left: 70%; animation-duration: 12s; animation-delay: 6s; }
+  .bubble-img:nth-child(4) { width: 100px; height: 100px; left: 25%; animation-duration: 13s; animation-delay: 9s; }
+  @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-700px) scale(1.1); opacity: 0; } }
+
+  /* LAVENDER MENU */
+  .lavender-menu { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+  .lavender-item { background: white; border-radius: 15px; padding: 15px; display: flex; align-items: center; gap: 15px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #f0e6d2;}
+  .lavender-item:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+  .lavender-item img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #ffb3c6;}
+  .lavender-item span { font-size: 15px; color: #d6336c; font-weight: bold; flex-grow: 1; text-align: left; }
+  
+  /* LAVENDER DETAILS */
+  .lavender-detail { 
+    text-align: center; 
+    animation: fadeIn 0.5s; 
+    position: relative; 
+    padding: 20px;
+    border-radius: 15px;
+    overflow: hidden; 
+    min-height: 400px; 
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  
+  .lavender-detail::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1; 
+  }
+  
+  #lavender-detail-1::before { background-image: url('https://i.imgur.com/4YO5nkS.jpg'); }
+  #lavender-detail-2::before { background-image: url('https://i.imgur.com/oFJXJWA.jpg'); }
+  #lavender-detail-3::before { background-image: url('https://i.imgur.com/6ERqC55.jpg'); }
+  #lavender-detail-4::before { background-image: url('https://i.imgur.com/J5t0nOu.jpg'); }
+
+  .lavender-detail h1 {
+    color: #d6336c;
+    text-shadow: 2px 2px 4px rgba(255,255,255,1);
+    margin-bottom: 15px;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 5px 15px;
+    border-radius: 10px;
+  }
+  .lavender-detail img { 
+    width: 150px; height: 150px; 
+    border-radius: 50%; object-fit: cover; 
+    border: 5px solid white; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
+    margin-bottom: 20px; 
+    z-index: 1;
+  }
+  .lavender-detail p { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 1.4rem; 
+    color: #111; 
+    background: rgba(255, 255, 255, 0.95); 
+    padding: 20px; 
+    border-radius: 15px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+    border: 2px solid white; 
+    line-height: 1.5;
+    z-index: 1; 
+  }
+  .lavender-detail .btn {
+    z-index: 1;
+  }
+
+  /* ========================================= */
+  /* CSS PARA SA CLICK HEART ANIMATION (GIBAG-O) */
+  /* ========================================= */
+  .click-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    /* Gigamit ang 💗 kay mas nindot ug gradient ang pink */
+    animation: floatUpFade 3s ease-in forwards;
+  }
+  
+  /* Ang animation: Magsugod sa ubos, moadto sa pinakababaw, unya mo-fade */
+  @keyframes floatUpFade {
+    0% { 
+      transform: translateY(0) scale(0.5); 
+      opacity: 0; 
+    }
+    10% { 
+      opacity: 1; 
+      transform: translateY(-20px) scale(1); 
+    }
+    80% { 
+      opacity: 1; 
+      transform: translateY(-90vh) scale(1.1); 
+    }
+    100% { 
+      transform: translateY(-100vh) scale(1.2); 
+      opacity: 0; 
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SCREEN 1: SECRET CODE -->
+  <div id="screen-code" class="code-screen-layout">
+    
+    <div class="photos-container">
+      <div class="heart-frame"></div>
+      <div class="heart-frame"></div>
+    </div>
+
+    <div class="code-title">
+      <span class="heart-icon">🎀</span> Enter our secret code <span class="heart-icon">💖</span>
+    </div>
+
+    <div class="display-hearts" id="heart-display">
+      <span id="h1">🤍</span>
+      <span id="h2">🤍</span>
+      <span id="h3">🤍</span>
+      <span id="h4">🤍</span>
+    </div>
+    <div class="code-status">Unlocked: 0</div>
+
+    <div class="keypad">
+      <button class="key" onclick="typeCode('1')">1</button>
+      <button class="key" onclick="typeCode('2')">2</button>
+      <button class="key" onclick="typeCode('3')">3</button>
+      <button class="key" onclick="typeCode('4')">4</button>
+      <button class="key" onclick="typeCode('5')">5</button>
+      <button class="key" onclick="typeCode('6')">6</button>
+      <button class="key" onclick="typeCode('7')">7</button>
+      <button class="key" onclick="typeCode('8')">8</button>
+      <button class="key" onclick="typeCode('9')">9</button>
+      <button class="key delete-btn" onclick="deleteCode()">⌫</button>
+      <button class="key" onclick="typeCode('0')">0</button>
+      <button class="key enter-btn" onclick="checkCode()">➡</button>
+    </div>
+    
+    <div id="error-msg" style="color:red; font-size:12px; display:none; margin-top:10px;">Wrong code, try again! 😉</div>
+  </div>
+
+  <!-- SCREEN 2: GIFT BOXES -->
+  <div id="screen-boxes" class="hidden">
+    <h1>You unlocked it!</h1>
+    <p>Your surprises are waiting for you</p>
+    <div class="boxes">
+      <div class="box" onclick="showContent('content-music')">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift 1">
+      </div>
+      <div class="box" onclick="showContent('content-flowers')">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift 2">
+      </div>
+      <div class="box" onclick="showContent('content-letter')">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=300&auto=format&fit=crop" alt="Gift 3">
+      </div>
+    </div>
+  </div>
+
+  <!-- SURPRISE 1: MUSIC (DUHA KA KANTA) -->
+  <div id="content-music" class="content-screen hidden">
+    <h1>Our Favorite Songs</h1>
+    <p>Two songs that remind me of you.</p>
+    
+    <!-- UNA NGA KANTA -->
+    <div class="song-title">Libu-libong Buwan by Kyle Raphael</div>
+    <iframe class="music-player" src="https://www.youtube.com/embed/MVrPhW8933U" title="Libo-libong Buwan - Kyle Raphael" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+    <!-- IKADUHA NGA KANTA -->
+    <div class="song-title">Best part by Daniel Ceasar ft. HER</div>
+    <iframe class="music-player" src="https://www.youtube.com/embed/vBy7FaapGRo" title="Best Part - Daniel Caesar ft. H.E.R." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
+  </div>
+
+  <!-- SURPRISE 2: LAVENDER MENU -->
+  <div id="content-flowers" class="content-screen hidden">
+    <h1>Your Favorite Flower</h1>
+    <p>Click each flower to read a message.</p>
+    
+    <div class="lavender-menu">
+      <div class="lavender-item" onclick="showLavenderDetail(1)">
+        <img src="https://i.imgur.com/4YO5nkS.jpg" alt="Lavender 1">
+        <span>Puhon...</span>
+      </div>
+      <div class="lavender-item" onclick="showLavenderDetail(2)">
+        <img src="https://i.imgur.com/oFJXJWA.jpg" alt="Lavender 2">
+        <span>Ikaw ug Ako</span>
+      </div>
+      <div class="lavender-item" onclick="showLavenderDetail(3)">
+        <img src="https://i.imgur.com/6ERqC55.jpg" alt="Lavender 3">
+        <span>Akong Pinangga</span>
+      </div>
+      <div class="lavender-item" onclick="showLavenderDetail(4)">
+        <img src="https://i.imgur.com/J5t0nOu.jpg" alt="Roses">
+        <span>Hangtod sa Kahangturan</span>
+      </div>
+    </div>
+    <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
+  </div>
+
+  <!-- LAVENDER DETAILS -->
+  <div id="lavender-detail-1" class="content-screen lavender-detail hidden">
+    <h1>Puhon...</h1>
+    <img src="https://i.imgur.com/4YO5nkS.jpg" alt="Lavender 1">
+    <p>This flower reminds me of our future together. Puhon, kung magkauban na ta pirmi, akong hatagan ka og pinakadako ug pinakaanindot nga buket sa bulak kay ikaw ra man ang akong gusto makuyog hangtod sa katapusan.</p>
+    <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
+  </div>
+
+  <div id="lavender-detail-2" class="content-screen lavender-detail hidden">
+    <h1>Ikaw ug Ako</h1>
+    <img src="https://i.imgur.com/oFJXJWA.jpg" alt="Lavender 2">
+    <p>Just like these flowers that grow beautifully side by side, I want to grow old with you. Ikaw ug ako, magkauban sa tanan. Bisan unsa pa ang muabot nga problema, dili ko ka biyaan kay ikaw ra ang akong pilion kada adlaw.</p>
+    <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
+  </div>
+
+  <div id="lavender-detail-3" class="content-screen lavender-detail hidden">
+    <h1>Akong Pinangga</h1>
+    <img src="https://i.imgur.com/6ERqC55.jpg" alt="Lavender 3">
+    <p>You are the greatest blessing I have ever received. Sama niini ka humot ug ka gwapa nga bulak, dili ko gyud ka ilisdan bisan kinsa. Ikaw ra ang akong pinangga ug akong pahulay sa tibuok adlaw.</p>
+    <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
+  </div>
+
+  <div id="lavender-detail-4" class="content-screen lavender-detail hidden">
+    <h1>Hangtod sa Kahangturan</h1>
+    <img src="https://i.imgur.com/J5t0nOu.jpg" alt="Roses">
+    <p>My love for you is like this lavender field, it keeps on growing and never fades. Ang akong gugma nimo dili mu-uga, sama niining lavender nga bisan malaya, naa gihapoy humot nga mahabilin. Hangtod sa kahangturan, ikaw lang ang akong gugma.</p>
+    <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
+  </div>
+
+  <!-- SURPRISE 3: BUBBLES PICTURES + LETTER -->
+  <div id="content-letter" class="content-screen hidden">
+    <h1>The Last Gift</h1>
+    <div class="letter-box">
+      <p>You make my life feel more beautiful and meaningful, and I feel so lucky to have you. I love you wholeheartedly, and I can’t wait to continue loving you for the rest of my life.</p>
+      <br>
+      <p>You make me smile, you make me feel safe, and you bring so much happiness into my world. I know I tell you this every day, but you truly are the most beautiful person in my eyes. Ikaw ang akong kalipay kada adlaw, ug ikaw ang akong pahulay sa tanang kabudlay.</p>
+      <br>
+      <p>Thank you for being you and for filling my heart with so much love. No matter what happens, I will always choose you. Ayaw kabalaka, kay bisan unsa pa, ikaw ra gyud akong pilion ug higugmaon.</p>
+      <br>
+      <p style="text-align: center; font-size: 1.5rem; color: #d6336c; font-weight: bold;">I love you. 💗</p>
+      <br>
+      <p style="text-align: right; font-weight: bold; margin-top: 10px;">Always, forever.<br>Yours truly,<br><span style="font-size: 1.5rem;">Poez</span></p>
+    </div>
+    <div class="bubble-container">
+        <img src="https://i.imgur.com/6dpv5ah.jpg" class="bubble-img" alt="Pic 1">
+        <img src="https://i.imgur.com/Vcoo85l.jpg" class="bubble-img" alt="Pic 2">
+        <img src="https://i.imgur.com/x6rdEUN.jpg" class="bubble-img" alt="Pic 3">
+        <img src="https://i.imgur.com/RWhuZMA.jpg" class="bubble-img" alt="Pic 4">
+    </div>
+    <button class="btn back-btn" onclick="backToBoxes()">⬅ Back to Gifts</button>
+  </div>
+
+</div>
+
+<script>
+  // MGA FUNCTION PARA SA SECRET CODE
+  let enteredCode = "";
+  const correctCode = "1201";
+  const heartIcons = ["h1", "h2", "h3", "h4"];
+
+  function typeCode(num) {
+    if (enteredCode.length < 4) {
+      enteredCode += num;
+      updateHearts();
+      createClickHearts(); // Mag-buto ang heart inig-click sa number
+    }
+  }
+
+  function deleteCode() {
+    if (enteredCode.length > 0) {
+      enteredCode = enteredCode.slice(0, -1);
+      updateHearts();
+      createClickHearts(); // Mag-buto ang heart inig-click sa delete
+    }
+  }
+
+  function updateHearts() {
+    for (let i = 0; i < 4; i++) {
+      document.getElementById(heartIcons[i]).innerText = (i < enteredCode.length) ? "❤️" : "🤍";
+    }
+    document.querySelector('.code-status').innerText = "Unlocked: " + enteredCode.length;
+    document.getElementById('error-msg').style.display = 'none';
+  }
+
+  function checkCode() {
+    createClickHearts(); // Mag-buto ang heart inig-click sa Enter
+    if (enteredCode === correctCode) {
+      document.getElementById('screen-code').classList.add('hidden');
+      document.getElementById('screen-boxes').classList.remove('hidden');
+    } else {
+      document.getElementById('error-msg').style.display = 'block';
+      enteredCode = "";
+      updateHearts();
+    }
+  }
+
+  // MGA FUNCTION PARA SA PAGBALHIN SA SCREEN
+  function showContent(contentId) {
+    createClickHearts(); // Mag-buto ang heart inig-click sa Gift Box
+    document.getElementById('screen-boxes').classList.add('hidden');
+    document.getElementById(contentId).classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  function showLavenderDetail(id) {
+    createClickHearts(); // Mag-buto ang heart inig-click sa Lavender Item
+    document.getElementById('content-flowers').classList.add('hidden');
+    document.getElementById('lavender-detail-' + id).classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  function backToLavenderMenu() {
+    createClickHearts(); // Mag-buto ang heart inig-click sa Back button
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById('lavender-detail-' + i).classList.add('hidden');
+    }
+    document.getElementById('content-flowers').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  function backToBoxes() {
+    createClickHearts(); // Mag-buto ang heart inig-click sa Back to Gifts
+    document.getElementById('content-music').classList.add('hidden');
+    document.getElementById('content-flowers').classList.add('hidden');
+    document.getElementById('content-letter').classList.add('hidden');
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById('lavender-detail-' + i).classList.add('hidden');
+    }
+    document.getElementById('screen-boxes').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  // ==========================================
+  // FUNCTION PARA SA PAGHIMO OG HEART ANIMATION (GIBAG-O)
+  // ==========================================
+  function createClickHearts() {
+    const totalHearts = 15; // 15 ka heart ang mogawas
+    
+    for (let i = 0; i < totalHearts; i++) {
+      // Maghimo og bag-ong element para sa heart
+      const heart = document.createElement('div');
+      heart.classList.add('click-heart');
+      
+      // Gigamit ang 💗 kay mas nindot ug gradient kaysa sa flat nga pink
+      heart.innerHTML = '💗'; 
+
+      // Random position sa X axis (left/right) ug random size
+      const randomX = Math.random() * window.innerWidth;
+      const randomSize = Math.random() * 20 + 20; // Tali sa 20px ug 40px
+      
+      heart.style.left = randomX + 'px';
+      heart.style.bottom = '0px'; // Magsugod sa pinakaubos
+      heart.style.fontSize = randomSize + 'px';
+
+      // Idugang sa body
+      document.body.appendChild(heart);
+
+      // Isa-isa sila paggawas pinaagi sa setTimeout delay
+      // Ang matag heart kay ma-delay og 100ms (0.1 seconds) para magsunod-sunod
+      setTimeout(() => {
+        heart.style.animation = 'floatUpFade 3s ease-in forwards';
+      }, i * 100); 
+
+      // Tangtanga ang heart human sa 4 seconds (3s animation + 1s delay) para limpyo
+      setTimeout(() => {
+        heart.remove();
+      }, 4000 + (i * 100));
+    }
+  }
+</script>
+
+</body>
+</html>
