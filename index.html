@@ -100,7 +100,7 @@
   .music-player { width: 100%; height: 180px; border-radius: 10px; margin-top: 15px; border: none; }
   .song-title { font-size: 14px; color: #d6336c; margin-top: 20px; font-weight: bold;}
 
-  /* BUBBLE ANIMATION */
+  /* BUBBLE ANIMATION SA PICTURES */
   .bubble-container { position: relative; height: 500px; overflow: hidden; margin-top: 20px; border-radius: 15px; background: rgba(255, 240, 245, 0.5); border: 1px dashed #ffb3c6;}
   .bubble-img { position: absolute; bottom: -150px; border-radius: 50%; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); object-fit: cover; animation: floatUp 15s linear infinite;}
   .bubble-img:nth-child(1) { width: 90px; height: 90px; left: 10%; animation-duration: 10s; animation-delay: 0s; }
@@ -127,7 +127,6 @@
     min-height: 400px; 
     display: flex; flex-direction: column; align-items: center; justify-content: center;
   }
-  
   .lavender-detail::before {
     content: "";
     position: absolute;
@@ -136,11 +135,9 @@
     background-position: center;
     z-index: -1; 
   }
-  
   #lavender-detail-1::before { background-image: url('https://i.imgur.com/4YO5nkS.jpg'); }
   #lavender-detail-2::before { background-image: url('https://i.imgur.com/oFJXJWA.jpg'); }
   #lavender-detail-3::before { background-image: url('https://i.imgur.com/6ERqC55.jpg'); }
-  /* GIILISAN NAKO OG TINUOD NGA LAVENDER FIELD ANG IKA-4 */
   #lavender-detail-4::before { background-image: url('https://images.unsplash.com/photo-1499002238440-d264edd596ec?q=80&w=800&auto=format&fit=crop'); } 
 
   .lavender-detail h1 {
@@ -172,18 +169,25 @@
     line-height: 1.5;
     z-index: 1; 
   }
-  .lavender-detail .btn {
-    z-index: 1;
-  }
+  .lavender-detail .btn { z-index: 1; }
 
-  /* CLICK HEART ANIMATION */
+  /* ========================================= */
+  /* CLICK HEART ANIMATION (GIBAG-O PARA MAG-ISA-ISA) */
+  /* ========================================= */
   .click-heart {
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    animation: floatUpFade 3s ease-in forwards;
+    bottom: 0; /* Magsugod jud sa pinakaubos */
+    transform: translateY(0) scale(0.5); /* Pormal nga size sa sugod */
+    opacity: 0; /* Tago sa sugod */
   }
   
+  /* Ang animation magsugod lang kung butangan og class sa JavaScript */
+  .click-heart.animate {
+    animation: floatUpFade 3s ease-in forwards;
+  }
+
   @keyframes floatUpFade {
     0% { transform: translateY(0) scale(0.5); opacity: 0; }
     10% { opacity: 1; transform: translateY(-20px) scale(1); }
@@ -280,7 +284,6 @@
         <span>Akong Pinangga</span>
       </div>
       <div class="lavender-item" onclick="showLavenderDetail(4)">
-        <!-- GIILISAN NAKO OG LAVENDER FIELD ANG PICTURE -->
         <img src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?q=80&w=200&auto=format&fit=crop" alt="Lavender Field">
         <span>Hangtod sa Kahangturan</span>
       </div>
@@ -312,7 +315,6 @@
 
   <div id="lavender-detail-4" class="content-screen lavender-detail hidden">
     <h1>Hangtod sa Kahangturan</h1>
-    <!-- GIILISAN NAKO OG LAVENDER FIELD ANG PICTURE -->
     <img src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?q=80&w=400&auto=format&fit=crop" alt="Lavender Field">
     <p>My love for you is like this lavender field, it keeps on growing and never fades. Ang akong gugma nimo dili mu-uga, sama niining lavender nga bisan malaya, naa gihapoy humot nga mahabilin. Hangtod sa kahangturan, ikaw lang ug wala nay lain pa ang akong gugma.</p>
     <button class="btn back-btn" onclick="backToLavenderMenu()">⬅ Back to Flowers</button>
@@ -371,7 +373,6 @@
     document.querySelector('.code-status').innerText = "Unlocked: " + enteredCode.length;
     document.getElementById('error-msg').style.display = 'none';
 
-    // KINI ANG BAG-O: KUNG MA-COMPLETE ANG 4 KA NUMERO UG SAKTO, DIRETSO NA SIYA OPEN
     if (enteredCode.length === 4) {
       setTimeout(() => {
         if (enteredCode === correctCode) {
@@ -382,7 +383,7 @@
           enteredCode = "";
           updateHearts();
         }
-      }, 300); // 0.3 seconds delay para makita niya ang ika-4 ka heart nga ni-red sa dili pa mo-open
+      }, 300);
     }
   }
 
@@ -433,21 +434,31 @@
     window.scrollTo(0, 0);
   }
 
+  // ==========================================
+  // GIBAG-O NGA FUNCTION PARA MAG-ISA-ISA ANG HEART
+  // ==========================================
   function createClickHearts() {
-    const totalHearts = 15;
+    const totalHearts = 15; 
+    
     for (let i = 0; i < totalHearts; i++) {
       const heart = document.createElement('div');
       heart.classList.add('click-heart');
       heart.innerHTML = '💗'; 
+
       const randomX = Math.random() * window.innerWidth;
       const randomSize = Math.random() * 20 + 20; 
+      
       heart.style.left = randomX + 'px';
-      heart.style.bottom = '0px'; 
       heart.style.fontSize = randomSize + 'px';
+
       document.body.appendChild(heart);
+
+      // KINI ANG IMPORTANTE: Maghulat siya og 100ms (0.1s) kada heart bag-o niya butangan og animation class
       setTimeout(() => {
-        heart.style.animation = 'floatUpFade 3s ease-in forwards';
+        heart.classList.add('animate'); // Dinhi pa magsugod ang CSS animation
       }, i * 100); 
+
+      // Tangtanga ang heart human sa 4 seconds para limpyo ang DOM
       setTimeout(() => {
         heart.remove();
       }, 4000 + (i * 100));
