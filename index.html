@@ -26,41 +26,24 @@
 
   /* SECRET CODE SCREEN DESIGN */
   .code-screen-layout { display: flex; flex-direction: column; align-items: center; width: 100%;}
-  
-  .photos-container {
-    display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; width: 100%;
-  }
+  .photos-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; width: 100%; }
   .heart-frame {
-    width: 100px; height: 100px;
-    background-size: cover; background-position: center;
+    width: 100px; height: 100px; background-size: cover; background-position: center;
     clip-path: path('M50,15 C50,15 20,-10 0,15 C-20,40 50,80 50,80 C50,80 120,40 100,15 C80,-10 50,15 50,15 Z');
     -webkit-clip-path: polygon(50% 15%, 80% 0%, 100% 35%, 50% 90%, 0% 35%, 20% 0%);
-    border: 4px solid #ffb3c6;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    position: relative;
+    border: 4px solid #ffb3c6; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative;
   }
   .heart-frame:nth-child(1) { background-image: url('https://i.imgur.com/oNvAg0n.jpg'); }
   .heart-frame:nth-child(2) { background-image: url('https://i.imgur.com/lA8ifxq.jpg'); }
   
   .code-title { font-family: 'Dancing Script', cursive; color: #d6336c; font-size: 2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;}
   .heart-icon { font-size: 1.5rem; }
-
-  .display-hearts {
-    display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;
-  }
+  .display-hearts { display: flex; justify-content: center; gap: 10px; margin-bottom: 10px; }
   .display-hearts span { font-size: 24px; color: #ff6b9d; }
-  
   .code-status { font-size: 10px; color: #888; margin-bottom: 15px;}
 
   /* KEYPAD STYLE */
-  .keypad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 100%;
-    max-width: 250px;
-    margin: 0 auto 20px auto;
-  }
+  .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; max-width: 250px; margin: 0 auto 20px auto; }
   .key {
     background: #fff; border: 2px solid #ffb3c6; border-radius: 15px;
     padding: 15px 0; font-size: 18px; font-weight: bold; color: #555;
@@ -78,10 +61,10 @@
   }
   .boxes { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;}
   .box { 
-    width: 90px; cursor: pointer; transition: 0.3s; 
-    animation: bounce 2s infinite; 
+    width: 90px; cursor: pointer; transition: 0.3s; animation: bounce 2s infinite; 
     display: flex; flex-direction: column; align-items: center;
   }
+  /* GIILISAN NAKO OG IMONG PICTURE ANG GIFT BOX */
   .box img { width: 100%; height: auto; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15)); transition: 0.3s; border-radius: 10px;}
   .box:nth-child(2) { animation-delay: 0.2s; }
   .box:nth-child(3) { animation-delay: 0.4s; }
@@ -100,7 +83,7 @@
   .music-player { width: 100%; height: 180px; border-radius: 10px; margin-top: 15px; border: none; }
   .song-title { font-size: 14px; color: #d6336c; margin-top: 20px; font-weight: bold;}
 
-  /* BUBBLE ANIMATION SA PICTURES */
+  /* BUBBLE ANIMATION */
   .bubble-container { position: relative; height: 500px; overflow: hidden; margin-top: 20px; border-radius: 15px; background: rgba(255, 240, 245, 0.5); border: 1px dashed #ffb3c6;}
   .bubble-img { position: absolute; bottom: -150px; border-radius: 50%; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); object-fit: cover; animation: floatUp 15s linear infinite;}
   .bubble-img:nth-child(1) { width: 90px; height: 90px; left: 10%; animation-duration: 10s; animation-delay: 0s; }
@@ -117,72 +100,21 @@
   .lavender-item span { font-size: 15px; color: #d6336c; font-weight: bold; flex-grow: 1; text-align: left; }
   
   /* LAVENDER DETAILS */
-  .lavender-detail { 
-    text-align: center; 
-    animation: fadeIn 0.5s; 
-    position: relative; 
-    padding: 20px;
-    border-radius: 15px;
-    overflow: hidden; 
-    min-height: 400px; 
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-  }
-  .lavender-detail::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: -1; 
-  }
+  .lavender-detail { text-align: center; animation: fadeIn 0.5s; position: relative; padding: 20px; border-radius: 15px; overflow: hidden; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .lavender-detail::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: -1; }
   #lavender-detail-1::before { background-image: url('https://i.imgur.com/4YO5nkS.jpg'); }
   #lavender-detail-2::before { background-image: url('https://i.imgur.com/oFJXJWA.jpg'); }
   #lavender-detail-3::before { background-image: url('https://i.imgur.com/6ERqC55.jpg'); }
   #lavender-detail-4::before { background-image: url('https://images.unsplash.com/photo-1499002238440-d264edd596ec?q=80&w=800&auto=format&fit=crop'); } 
 
-  .lavender-detail h1 {
-    color: #d6336c;
-    text-shadow: 2px 2px 4px rgba(255,255,255,1);
-    margin-bottom: 15px;
-    z-index: 1;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 5px 15px;
-    border-radius: 10px;
-  }
-  .lavender-detail img { 
-    width: 150px; height: 150px; 
-    border-radius: 50%; object-fit: cover; 
-    border: 5px solid white; 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
-    margin-bottom: 20px; 
-    z-index: 1;
-  }
-  .lavender-detail p { 
-    font-family: 'Dancing Script', cursive; 
-    font-size: 1.4rem; 
-    color: #111; 
-    background: rgba(255, 255, 255, 0.95); 
-    padding: 20px; 
-    border-radius: 15px; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
-    border: 2px solid white; 
-    line-height: 1.5;
-    z-index: 1; 
-  }
+  .lavender-detail h1 { color: #d6336c; text-shadow: 2px 2px 4px rgba(255,255,255,1); margin-bottom: 15px; z-index: 1; background: rgba(255, 255, 255, 0.7); padding: 5px 15px; border-radius: 10px; }
+  .lavender-detail img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.3); margin-bottom: 20px; z-index: 1; }
+  .lavender-detail p { font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: #111; background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 2px solid white; line-height: 1.5; z-index: 1; }
   .lavender-detail .btn { z-index: 1; }
 
-  /* CLICK HEART ANIMATION (ISA-ISA) */
-  .click-heart {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    bottom: 0; 
-    transform: translateY(0) scale(0.5); 
-    opacity: 0; 
-  }
-  .click-heart.animate {
-    animation: floatUpFade 3s ease-in forwards;
-  }
+  /* CLICK HEART ANIMATION */
+  .click-heart { position: fixed; pointer-events: none; z-index: 9999; bottom: 0; transform: translateY(0) scale(0.5); opacity: 0; }
+  .click-heart.animate { animation: floatUpFade 3s ease-in forwards; }
   @keyframes floatUpFade {
     0% { transform: translateY(0) scale(0.5); opacity: 0; }
     10% { opacity: 1; transform: translateY(-20px) scale(1); }
@@ -228,22 +160,28 @@
     <div id="error-msg" style="color:red; font-size:12px; display:none; margin-top:10px;">Wrong code, try again! 😉</div>
   </div>
 
-  <!-- SCREEN 2: GIFT BOXES (GIILISAN OG 3D RED GIFT BOX) -->
+  <!-- SCREEN 2: GIFT BOXES (IMONG PICTURE) -->
   <div id="screen-boxes" class="hidden">
     <h1>You unlocked it!</h1>
     <p>Your surprises are waiting for you</p>
     <div class="boxes">
       <div class="box" onclick="showContent('content-music')">
-        <!-- 3D RED GIFT BOX PICTURE -->
-        <img src="https://images.unsplash.com/photo-1575884763291-8dcf5d05be6f?q=80&w=300&auto=format&fit=crop" alt="Gift 1">
+        <img src="https://i.imgur.com/pSIJwmy.jpg" alt="Gift 1">
       </div>
       <div class="box" onclick="showContent('content-flowers')">
-        <img src="https://images.unsplash.com/photo-1575884763291-8dcf5d05be6f?q=80&w=300&auto=format&fit=crop" alt="Gift 2">
+        <img src="https://i.imgur.com/pSIJwmy.jpg" alt="Gift 2">
       </div>
       <div class="box" onclick="showContent('content-letter')">
-        <img src="https://images.unsplash.com/photo-1575884763291-8dcf5d05be6f?q=80&w=300&auto=format&fit=crop" alt="Gift 3">
+        <img src="https://i.imgur.com/pSIJwmy.jpg" alt="Gift 3">
       </div>
     </div>
+  </div>
+
+  <!-- BAG-O NGA SCREEN PARA SA IKADUHANG PICTURE -->
+  <div id="content-intro" class="content-screen hidden">
+    <!-- IKADUHANG PICTURE NIMO DIRE -->
+    <img src="https://i.imgur.com/Gc5Sv0W.jpg" alt="Intro Picture" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); margin-bottom: 20px;">
+    <button class="btn" onclick="showContent('content-music')">Open Your Gift ➡</button>
   </div>
 
   <!-- SURPRISE 1: MUSIC -->
@@ -390,7 +328,13 @@
   function showContent(contentId) {
     createClickHearts();
     document.getElementById('screen-boxes').classList.add('hidden');
-    document.getElementById(contentId).classList.remove('hidden');
+    
+    // Kung ang gi-click kay usa sa mga boxes, ipakita una ang intro picture
+    if (contentId === 'content-music' || contentId === 'content-flowers' || contentId === 'content-letter') {
+      document.getElementById('content-intro').classList.remove('hidden');
+    } else {
+      document.getElementById(contentId).classList.remove('hidden');
+    }
     window.scrollTo(0, 0);
   }
 
@@ -412,6 +356,7 @@
 
   function backToBoxes() {
     createClickHearts();
+    document.getElementById('content-intro').classList.add('hidden');
     document.getElementById('content-music').classList.add('hidden');
     document.getElementById('content-flowers').classList.add('hidden');
     document.getElementById('content-letter').classList.add('hidden');
